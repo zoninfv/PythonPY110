@@ -32,6 +32,5 @@ urlpatterns = [
     path('random/', random_view),
     path('datetime/',datetime_view),
     path('weather/', my_view),
-    path('product/',products_view),
-    path('', shop_view)
+    path('', include('store.urls'))
 ]
