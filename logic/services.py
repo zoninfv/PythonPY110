@@ -86,7 +86,19 @@ def add_to_cart(id_product: str) -> bool:
     :return: Возвращает True в случае успешного добавления, а False в случае неуспешного добавления(товара по id_product
     не существует).
     """
-    cart = ...  # TODO Помните, что у вас есть уже реализация просмотра корзины,
+    cart = {'products': {}}
+    if id_product in DATABASE:
+        if id_product in cart['products']:
+            cart['products']['products'] += 1
+        else:
+            cart['products'] = 1
+    else
+        return False
+    with open('cart.json', mode='w', encoding='utf-8') as f:  # Создаём файл и записываем туда пустую корзину
+        json.dump(cart, f)
+
+
+      # TODO Помните, что у вас есть уже реализация просмотра корзины,
     # поэтому, чтобы загрузить данные из корзины, не нужно заново писать код.
 
     # ! Обратите внимание, что в переменной cart находится словарь с ключом products.
@@ -113,7 +125,17 @@ def remove_from_cart(id_product: str) -> bool:
     :return: Возвращает True в случае успешного удаления, а False в случае неуспешного удаления(товара по id_product
     не существует).
     """
-    cart = ...  # TODO Помните, что у вас есть уже реализация просмотра корзины,
+      # TODO Помните, что у вас есть уже реализация просмотра корзины,
+    cart = {'products': {}}
+    if id_product in cart['products']:
+        del cart['products'][id_product]
+        with open('cart.json', mode='w', encoding='utf-8') as f:  # Создаём файл и записываем туда пустую корзину
+            json.dump(cart, f)
+    else:
+        return False
+
+    return True
+
     # поэтому, чтобы загрузить данные из корзины, не нужно заново писать код.
 
     # С переменной cart функции remove_from_cart ситуация аналогичная, что с cart функции add_to_cart

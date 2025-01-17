@@ -7,7 +7,9 @@ from logic.services import filtering_category
 urlpatterns = [
     path('product/', products_view),
     path('', shop_view),
-    path('product/<slug:page>.html', product_page_view ),
+    path('product/<slug:page>.html', product_page_view),
     path('product/<int:page>', product_page_view),
-
+    path('cart/', cart_view),
+    path('cart/add/<str:id_product>', cart_add_view),
+    path('cart/del/<str:id_product>', cart_del_view),
 ]
